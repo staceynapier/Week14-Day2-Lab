@@ -12,12 +12,6 @@ class DirectorContainer extends React.Component {
     }
   }
 
-  componentDidMount() {
-    fetch("http://netflixroulette.net/api/api.php?actor=quentin%20tarantino")
-      .then((res) => res.json())
-      .then((res) => this.setState({ films: res}));
-  }
-
   handleSearch(director) {
     director = encodeURIComponent(director.director);
     console.log(director);
@@ -35,15 +29,15 @@ class DirectorContainer extends React.Component {
       fetch(url)
         .then((res) => res.json())
         .then((res) => this.setState({ films: res}));
- 
+
   }
 
   render(){
     return (
       <div>
-        <h2>Director File Search</h2>
+        <h1>Search Netflix By Director</h1>
         <DirectorInput onSearch={this.handleSearch.bind(this)}/>
-        {/* <DirectorFilmDetails films={this.state.films} onChangeDirector={this.onChangeDirector.bind(this)}/> */}
+        <DirectorFilmDetails films={this.state.films}/>
       </div>
     )
   }
